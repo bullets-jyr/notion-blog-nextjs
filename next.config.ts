@@ -1,4 +1,5 @@
 import type {NextConfig} from 'next';
+import createMDX from '@next/mdx'
 
 const nextConfig: NextConfig = {
     /* config options here */
@@ -15,6 +16,12 @@ const nextConfig: NextConfig = {
             },
         ],
     },
+    pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
 };
 
-export default nextConfig;
+const withMDX = createMDX({
+    // 필요한 마크다운 플러그인을 여기에 추가하세요
+})
+
+// MDX 설정을 Next.js 설정과 병합
+export default withMDX(nextConfig)
